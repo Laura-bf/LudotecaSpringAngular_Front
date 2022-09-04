@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,6 +18,7 @@ import { ClientEditComponent } from './client-edit/client-edit.component';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     MatTableModule,
     MatIconModule, 
     MatButtonModule,
