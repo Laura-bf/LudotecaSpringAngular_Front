@@ -1,7 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Client } from '../model/Client';
 import { ClientService } from '../client.service';
+import { NgIfContext } from '@angular/common';
+
 
 @Component({
   selector: 'app-client-edit',
@@ -14,6 +17,7 @@ export class ClientEditComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ClientEditComponent>,
+    public snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private clientService: ClientService
   ) { }
@@ -29,16 +33,14 @@ export class ClientEditComponent implements OnInit {
 
   onSave(){
     this.clientService.saveClient(this.client).subscribe(result => {
-      next: this.dialogRef.close();
-
-      error: (err:any) => {
+        this.snackBar.open("Cambios guardados correctamente");
         this.dialogRef.close();
-      } 
-    });
+    })
   }
 
   onClose(){
     this.dialogRef.close();
   }
+
 
 }
